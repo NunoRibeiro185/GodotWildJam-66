@@ -1,0 +1,71 @@
+[gd_scene load_steps=6 format=3 uid="uid://cmh5evyivyc4o"]
+
+[ext_resource type="PackedScene" uid="uid://bqa8joa6uwyck" path="res://Scenes/player.tscn" id="1_y0f2y"]
+[ext_resource type="PackedScene" uid="uid://byvcpsavnnb4b" path="res://Scenes/platform.tscn" id="2_ywrhk"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_hedwy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sys41"]
+size = Vector2(800, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s6itk"]
+size = Vector2(10, 600)
+
+[node name="Level" type="Node"]
+
+[node name="Box" type="StaticBody2D" parent="."]
+
+[node name="Floor" type="MeshInstance2D" parent="Box"]
+modulate = Color(0.741176, 0.517647, 0.266667, 1)
+position = Vector2(542, 650)
+scale = Vector2(800, 10)
+mesh = SubResource("QuadMesh_hedwy")
+
+[node name="Ceiling" type="MeshInstance2D" parent="Box"]
+modulate = Color(0.741176, 0.517647, 0.266667, 1)
+position = Vector2(542, 60)
+scale = Vector2(800, 10)
+mesh = SubResource("QuadMesh_hedwy")
+
+[node name="Wall" type="MeshInstance2D" parent="Box"]
+modulate = Color(0.741176, 0.517647, 0.266667, 1)
+position = Vector2(937, 355)
+scale = Vector2(10, 600)
+mesh = SubResource("QuadMesh_hedwy")
+
+[node name="Wall2" type="MeshInstance2D" parent="Box"]
+modulate = Color(0.741176, 0.517647, 0.266667, 1)
+position = Vector2(147, 355)
+scale = Vector2(10, 600)
+mesh = SubResource("QuadMesh_hedwy")
+
+[node name="Collision Floor" type="CollisionShape2D" parent="Box"]
+position = Vector2(542, 650)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_sys41")
+
+[node name="Collision Ceilling" type="CollisionShape2D" parent="Box"]
+position = Vector2(542, 60)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_sys41")
+
+[node name="Collision Walls" type="CollisionShape2D" parent="Box"]
+position = Vector2(147, 355)
+shape = SubResource("RectangleShape2D_s6itk")
+
+[node name="Collision Walls2" type="CollisionShape2D" parent="Box"]
+position = Vector2(937, 355)
+shape = SubResource("RectangleShape2D_s6itk")
+
+[node name="Player" parent="." instance=ExtResource("1_y0f2y")]
+position = Vector2(771, 597)
+scale = Vector2(3, 3)
+
+[node name="Platform" parent="." instance=ExtResource("2_ywrhk")]
+position = Vector2(259, 543)
+
+[node name="Platform2" parent="." instance=ExtResource("2_ywrhk")]
+position = Vector2(383, 491)
+
+[node name="Platform3" parent="." instance=ExtResource("2_ywrhk")]
+position = Vector2(639, 502)
