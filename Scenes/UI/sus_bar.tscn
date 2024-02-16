@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://cmspfaumyn06y"]
+
+[ext_resource type="Script" path="res://Scenes/UI/sus_bar.gd" id="1_dbe61"]
+[ext_resource type="Texture2D" uid="uid://cgflpt2n6njo5" path="res://Assets/UI-Sheet.png" id="1_w3qhi"]
+[ext_resource type="Script" path="res://Scenes/UI/indicator.gd" id="3_jtnia"]
+
+[node name="SusBar" type="Node2D"]
+position = Vector2(-1, 0)
+script = ExtResource("1_dbe61")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_w3qhi")
+region_enabled = true
+region_rect = Rect2(12, 10, 24, 108)
+
+[node name="Dead Indicator" type="Node2D" parent="."]
+script = ExtResource("3_jtnia")
+
+[node name="Sprite2D" type="Sprite2D" parent="Dead Indicator"]
+texture = ExtResource("1_w3qhi")
+region_enabled = true
+region_rect = Rect2(61, 20, 22, 8)
+
+[node name="Alive Indicator" type="Node2D" parent="."]
+script = ExtResource("3_jtnia")
+
+[node name="Sprite2D" type="Sprite2D" parent="Alive Indicator"]
+texture = ExtResource("1_w3qhi")
+region_enabled = true
+region_rect = Rect2(61, 20, 22, 8)

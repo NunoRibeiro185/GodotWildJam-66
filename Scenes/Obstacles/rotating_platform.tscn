@@ -1,24 +1,38 @@
-[gd_scene load_steps=4 format=3 uid="uid://nwydmy6ai7y3"]
+[gd_scene load_steps=6 format=3 uid="uid://nwydmy6ai7y3"]
 
-[ext_resource type="Texture2D" uid="uid://dwlhh4e3ka4lp" path="res://Assets/Tileset_Schrodingers_Cat.png" id="1_isre4"]
+[ext_resource type="Texture2D" uid="uid://cgtey8k40u18a" path="res://Assets/Platforms.png" id="1_2xl3v"]
+[ext_resource type="Script" path="res://Scripts/rotating_platform.gd" id="1_vw7ed"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o1xkv"]
-size = Vector2(32, 8)
+size = Vector2(64, 8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c0lvc"]
 size = Vector2(8, 32)
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_qcqeq"]
+polygon = PackedVector2Array(-32, -2, -32, 2, -30, 4, -4, 4, -4, 14, -2, 16, 2, 16, 4, 14, 4, 4, 30, 4, 32, 2, 32, -2, 30, -4, 4, -4, 4, -14, 2, -16, -2, -16, -4, -14, -4, -4, -30, -4)
+
 [node name="Rotating Platform" type="StaticBody2D"]
-scale = Vector2(4, 2)
+scale = Vector2(2, 2)
 collision_layer = 2
+script = ExtResource("1_vw7ed")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_isre4")
+texture = ExtResource("1_2xl3v")
 region_enabled = true
-region_rect = Rect2(96, 96, 32, 32)
+region_rect = Rect2(0, 96, 64, 32)
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_o1xkv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_c0lvc")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_qcqeq")
+occluder_light_mask = 512
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

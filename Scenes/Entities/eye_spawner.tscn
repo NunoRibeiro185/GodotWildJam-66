@@ -5,8 +5,13 @@
 [node name="EyeSpawner" type="Node"]
 script = ExtResource("1_jn3mj")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="EyeSpawn" type="Timer" parent="."]
 wait_time = 1.5
+one_shot = true
+
+[node name="DifficultyUp" type="Timer" parent="."]
+wait_time = 10.0
 autostart = true
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="EyeSpawn" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="DifficultyUp" to="." method="_on_difficulty_up_timeout"]

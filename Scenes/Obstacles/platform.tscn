@@ -1,27 +1,26 @@
 [gd_scene load_steps=4 format=3 uid="uid://byvcpsavnnb4b"]
 
-[ext_resource type="Texture2D" uid="uid://dwlhh4e3ka4lp" path="res://Assets/Tileset_Schrodingers_Cat.png" id="1_fyyco"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_o4bt7"]
-size = Vector2(32, 11)
+[ext_resource type="Texture2D" uid="uid://cgtey8k40u18a" path="res://Assets/Platforms.png" id="1_iyg20"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_i4mac"]
-polygon = PackedVector2Array(-16, -5.33333, 16, -5.33333, 16, 5.33333, -16, 5.33333, -16, -5.33333)
+polygon = PackedVector2Array(-30, -5.33333, 30, -5.33333, 31, 0, 30, 5.33333, -30.3333, 5.33333, -31, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o4bt7"]
+size = Vector2(64, 11)
 
 [node name="Platform" type="StaticBody2D"]
-scale = Vector2(3, 1.5)
 collision_layer = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(4.76837e-07, 0)
-shape = SubResource("RectangleShape2D_o4bt7")
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_fyyco")
+texture = ExtResource("1_iyg20")
 region_enabled = true
-region_rect = Rect2(96, 73, 32, 11)
+region_rect = Rect2(0, 18, 64, 11)
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 occluder = SubResource("OccluderPolygon2D_i4mac")
 sdf_collision = false
 occluder_light_mask = 512
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(4.76837e-07, 0)
+shape = SubResource("RectangleShape2D_o4bt7")

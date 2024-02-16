@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvleyoocg80c5"]
+
+[ext_resource type="Script" path="res://Scripts/scene_loader.gd" id="1_g8ta6"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_g8ta6")
+mainMenuScenePath = "res://Scenes/Levels/main_menu.tscn"
+mainGameScenePath = "res://Scenes/Levels/level.tscn"
+gameOverScenePath = "res://Scenes/Levels/game_over.tscn"

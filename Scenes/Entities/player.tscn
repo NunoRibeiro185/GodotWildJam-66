@@ -398,7 +398,7 @@ wait_time = 0.2
 one_shot = true
 
 [node name="JumpBuffer" type="Timer" parent="."]
-wait_time = 0.2
+wait_time = 0.08
 one_shot = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -413,5 +413,11 @@ libraries = {
 tree_root = SubResource("AnimationNodeStateMachine_rrdta")
 anim_player = NodePath("../AnimationPlayer")
 
+[node name="Alive Timer" type="Timer" parent="."]
+
+[node name="Dead Timer" type="Timer" parent="."]
+
 [connection signal="timeout" from="CoyoteTime" to="." method="_on_coyote_time_timeout"]
 [connection signal="timeout" from="JumpBuffer" to="." method="_on_jump_buffer_timeout"]
+[connection signal="timeout" from="Alive Timer" to="." method="_on_alive_timer_timeout"]
+[connection signal="timeout" from="Dead Timer" to="." method="_on_dead_timer_timeout"]

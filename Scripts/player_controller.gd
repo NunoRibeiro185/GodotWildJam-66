@@ -11,6 +11,8 @@ var jump_velocity = -850
 #Timers
 @onready var coyote_time = $CoyoteTime
 @onready var jump_buffer_time = $JumpBuffer
+@onready var alive_timer = $"Alive Timer"
+@onready var dead_timer = $"Dead Timer"
 
 #Sprite
 @onready var animation = $AnimationTree["parameters/playback"]
@@ -32,6 +34,8 @@ var last_floor = false
 
 var hspeed_threshold = 1.0
 var state = "ALIVE"
+
+@onready var sus_bar = $"../CanvasLayer/SusBar"
 
 func _physics_process(delta):
 	if Input.is_action_pressed("play_dead"):
@@ -106,6 +110,12 @@ func current_gravity():
 	else:
 		return gravity
 
+func detected(state):
+	if state == "ALIVE":
+		alive_timer.start()
+	elif state == "DEAD":
+		dead_timer.start()
+
 func current_max_vspeed():
 	return max_vspeed
 	
@@ -114,3 +124,9 @@ func _on_coyote_time_timeout():
 
 func _on_jump_buffer_timeout():
 	jump_buffer = false
+
+func _on_alive_timer_timeout():
+	sus_bar.alive_indicator.move(-1)
+
+func _on_dead_timer_timeout():
+	sus_bar.dead_indicator.move(1)

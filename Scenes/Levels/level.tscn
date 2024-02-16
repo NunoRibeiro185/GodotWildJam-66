@@ -1,11 +1,16 @@
-[gd_scene load_steps=17 format=3 uid="uid://cmh5evyivyc4o"]
+[gd_scene load_steps=20 format=3 uid="uid://cmh5evyivyc4o"]
 
+[ext_resource type="Script" path="res://Scripts/level.gd" id="1_3yyhy"]
 [ext_resource type="PackedScene" uid="uid://dp6crcac1ssj6" path="res://Scenes/Entities/eye_spawner.tscn" id="1_8omlf"]
 [ext_resource type="Texture2D" uid="uid://dwlhh4e3ka4lp" path="res://Assets/Tileset_Schrodingers_Cat.png" id="1_e2ksb"]
 [ext_resource type="Texture2D" uid="uid://cy2c0e757no67" path="res://Assets/cardboarbox-ezgif.com-webp-to-png-converter.webp" id="1_uthh1"]
 [ext_resource type="PackedScene" uid="uid://bqa8joa6uwyck" path="res://Scenes/Entities/player.tscn" id="1_y0f2y"]
 [ext_resource type="PackedScene" uid="uid://byvcpsavnnb4b" path="res://Scenes/Obstacles/platform.tscn" id="2_ywrhk"]
 [ext_resource type="Texture2D" uid="uid://brms5evg2lbe2" path="res://Assets/PointLight.png" id="7_bpm8d"]
+[ext_resource type="PackedScene" uid="uid://cmspfaumyn06y" path="res://Scenes/UI/sus_bar.tscn" id="7_ry4be"]
+[ext_resource type="PackedScene" uid="uid://7eykyp3gtkdw" path="res://Scenes/Obstacles/platform_long.tscn" id="8_t673c"]
+[ext_resource type="PackedScene" uid="uid://nwydmy6ai7y3" path="res://Scenes/Obstacles/rotating_platform.tscn" id="9_1g7wx"]
+[ext_resource type="Script" path="res://Scripts/Timer.gd" id="9_e4sct"]
 
 [sub_resource type="Curve" id="Curve_ydkxs"]
 _data = [Vector2(0.631868, 1), 0.0, 0.0, 0, 0]
@@ -100,19 +105,16 @@ size = Vector2(800, 10)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s6itk"]
 size = Vector2(10, 639)
 
-[sub_resource type="QuadMesh" id="QuadMesh_26713"]
-
-[sub_resource type="MeshTexture" id="MeshTexture_q5lho"]
-
 [node name="Level" type="Node"]
+script = ExtResource("1_3yyhy")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0, 0, 0, 1)
 
 [node name="Background" type="Sprite2D" parent="."]
-modulate = Color(0.0980392, 0.0509804, 0.14902, 1)
+modulate = Color(0.109804, 0.0392157, 0.152941, 1)
 position = Vector2(548, 352)
-scale = Vector2(5.28125, 848)
+scale = Vector2(8.921, 1432.49)
 texture = SubResource("CurveXYZTexture_65nvw")
 
 [node name="Box Sprite" type="Sprite2D" parent="."]
@@ -156,26 +158,42 @@ texture = ExtResource("7_bpm8d")
 texture_scale = 20.31
 
 [node name="PointLight2D3" type="PointLight2D" parent="Lights"]
-visible = false
 position = Vector2(320, 128)
 texture = ExtResource("7_bpm8d")
 texture_scale = 10.0
 
 [node name="PointLight2D4" type="PointLight2D" parent="Lights"]
-visible = false
 position = Vector2(768, 128)
 texture = ExtResource("7_bpm8d")
 texture_scale = 10.0
 
 [node name="PointLight2D5" type="PointLight2D" parent="Lights"]
-visible = false
 position = Vector2(768, 576)
 texture = ExtResource("7_bpm8d")
 texture_scale = 10.0
 
 [node name="PointLight2D6" type="PointLight2D" parent="Lights"]
-visible = false
 position = Vector2(264, 576)
+texture = ExtResource("7_bpm8d")
+texture_scale = 10.0
+
+[node name="PointLight2D7" type="PointLight2D" parent="Lights"]
+position = Vector2(-16, 600)
+texture = ExtResource("7_bpm8d")
+texture_scale = 10.0
+
+[node name="PointLight2D8" type="PointLight2D" parent="Lights"]
+position = Vector2(-24, 200)
+texture = ExtResource("7_bpm8d")
+texture_scale = 10.0
+
+[node name="PointLight2D9" type="PointLight2D" parent="Lights"]
+position = Vector2(1096, 160)
+texture = ExtResource("7_bpm8d")
+texture_scale = 10.0
+
+[node name="PointLight2D10" type="PointLight2D" parent="Lights"]
+position = Vector2(1096, 512)
 texture = ExtResource("7_bpm8d")
 texture_scale = 10.0
 
@@ -209,6 +227,12 @@ position = Vector2(768, 320)
 light_mask = 2
 position = Vector2(320, 320)
 
+[node name="Platform9" parent="Platforms" instance=ExtResource("8_t673c")]
+position = Vector2(432, 197)
+
+[node name="Platform10" parent="Platforms" instance=ExtResource("8_t673c")]
+position = Vector2(656, 198)
+
 [node name="Eyes" type="Node" parent="."]
 
 [node name="EyeSpawner" parent="." instance=ExtResource("1_8omlf")]
@@ -218,61 +242,9 @@ position = Vector2(624, 376)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="CanvasLayer"]
-modulate = Color(0.235294, 0.164706, 0.427451, 1)
-position = Vector2(95.4163, 353.113)
-scale = Vector2(-63.2755, 577.085)
-mesh = SubResource("QuadMesh_26713")
-texture = SubResource("MeshTexture_q5lho")
-
-[node name="MeshInstance2D2" type="MeshInstance2D" parent="CanvasLayer"]
-modulate = Color(0.733333, 0, 0.0235294, 1)
-position = Vector2(95.4163, 95.0667)
-scale = Vector2(-63.2755, 60.9916)
-mesh = SubResource("QuadMesh_26713")
-texture = SubResource("MeshTexture_q5lho")
-
-[node name="MeshInstance2D3" type="MeshInstance2D" parent="CanvasLayer"]
-modulate = Color(0.733333, 0, 0.0235294, 1)
-position = Vector2(96, 576)
-scale = Vector2(-63.2755, 129.992)
-mesh = SubResource("QuadMesh_26713")
-texture = SubResource("MeshTexture_q5lho")
-
-[node name="MeshInstance2D5" type="MeshInstance2D" parent="CanvasLayer"]
-modulate = Color(0.929412, 0.709804, 0.137255, 1)
-position = Vector2(96, 223.5)
-scale = Vector2(-63.2755, 194.992)
-mesh = SubResource("QuadMesh_26713")
-texture = SubResource("MeshTexture_q5lho")
-
-[node name="MeshInstance2D6" type="MeshInstance2D" parent="CanvasLayer"]
-modulate = Color(0.929412, 0.709804, 0.137255, 1)
-position = Vector2(96, 481.5)
-scale = Vector2(-63.2755, 196.992)
-mesh = SubResource("QuadMesh_26713")
-texture = SubResource("MeshTexture_q5lho")
-
-[node name="MeshInstance2D7" type="MeshInstance2D" parent="CanvasLayer"]
-modulate = Color(0, 0.807843, 0.239216, 1)
-position = Vector2(96, 356.078)
-scale = Vector2(-63.2755, 138.245)
-mesh = SubResource("QuadMesh_26713")
-texture = SubResource("MeshTexture_q5lho")
-
-[node name="MeshInstance2D8" type="MeshInstance2D" parent="CanvasLayer"]
-modulate = Color(0.796078, 0.533333, 1, 1)
-position = Vector2(96, 328)
-scale = Vector2(-63.2755, 12.5215)
-mesh = SubResource("QuadMesh_26713")
-texture = SubResource("MeshTexture_q5lho")
-
-[node name="MeshInstance2D9" type="MeshInstance2D" parent="CanvasLayer"]
-modulate = Color(0, 0.729412, 0.976471, 1)
-position = Vector2(96, 376)
-scale = Vector2(-63.2755, 12.5215)
-mesh = SubResource("QuadMesh_26713")
-texture = SubResource("MeshTexture_q5lho")
+[node name="SusBar" parent="CanvasLayer" instance=ExtResource("7_ry4be")]
+position = Vector2(91, 360)
+scale = Vector2(5, 5)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer"]
 anchors_preset = -1
@@ -280,10 +252,10 @@ anchor_left = 0.059
 anchor_top = 0.044
 anchor_right = 0.059
 anchor_bottom = 0.044
-offset_left = 8.27999
-offset_top = -7.68
-offset_right = 80.28
-offset_bottom = 32.32
+offset_left = 5.28
+offset_top = 31.32
+offset_right = 77.28
+offset_bottom = 71.32
 text = "Dead"
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="CanvasLayer"]
@@ -292,8 +264,18 @@ anchor_left = 0.059
 anchor_top = 0.044
 anchor_right = 0.059
 anchor_bottom = 0.044
-offset_left = 16.28
-offset_top = 608.32
-offset_right = 64.28
-offset_bottom = 632.32
+offset_left = 7.28
+offset_top = 600.32
+offset_right = 55.28
+offset_bottom = 624.32
 text = "Alive"
+
+[node name="Timer" type="RichTextLabel" parent="CanvasLayer"]
+offset_left = 928.0
+offset_top = 64.0
+offset_right = 1072.0
+offset_bottom = 112.0
+script = ExtResource("9_e4sct")
+
+[node name="Rotating Platform" parent="." instance=ExtResource("9_1g7wx")]
+position = Vector2(544, 296)
