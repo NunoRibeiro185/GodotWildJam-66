@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bqa1gsg172cdi"]
+
+[ext_resource type="Texture2D" uid="uid://usnfvpax07s0" path="res://Assets/Wildcards.png" id="1_0fah0"]
+[ext_resource type="Script" path="res://Scripts/UI/wildcard_button.gd" id="2_npdbo"]
+
+[node name="Wildcard Button" type="TextureButton"]
+offset_right = 14.0
+offset_bottom = 14.0
+scale = Vector2(12.56, 7.36)
+texture_normal = ExtResource("1_0fah0")
+ignore_texture_size = true
+stretch_mode = 4
+script = ExtResource("2_npdbo")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

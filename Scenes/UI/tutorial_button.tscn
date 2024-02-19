@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://c280tv12htmvk"]
+
+[ext_resource type="Texture2D" uid="uid://dfl5vdkrghucr" path="res://Assets/Tutorials.png" id="1_50a2x"]
+[ext_resource type="Script" path="res://Scripts/UI/tutorial_button.gd" id="2_3f1kr"]
+
+[node name="Tutorial Button" type="TextureButton"]
+offset_right = 14.0
+offset_bottom = 14.0
+scale = Vector2(12.56, 7.36)
+texture_normal = ExtResource("1_50a2x")
+ignore_texture_size = true
+stretch_mode = 4
+script = ExtResource("2_3f1kr")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

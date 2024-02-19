@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://dupjrfyl4ek7c"]
+[gd_scene load_steps=6 format=3 uid="uid://dupjrfyl4ek7c"]
 
 [ext_resource type="Texture2D" uid="uid://1alch0b4i36g" path="res://Assets/Title_v3.png" id="1_xfueh"]
-[ext_resource type="Script" path="res://Scripts/Final Score.gd" id="2_t8o85"]
+[ext_resource type="Script" path="res://Scripts/UI/Final Score.gd" id="2_t8o85"]
+[ext_resource type="PackedScene" uid="uid://bmcvhx5gdruqr" path="res://Scenes/UI/restart_button.tscn" id="3_u45o2"]
+[ext_resource type="PackedScene" uid="uid://8my4vmkvooeh" path="res://Scenes/UI/quit_button.tscn" id="4_n3htk"]
+[ext_resource type="PackedScene" uid="uid://dbt6nmmigeo8j" path="res://Scenes/UI/main_menu_button.tscn" id="5_ee8tb"]
 
 [node name="MainMenu" type="Node2D"]
 
@@ -17,9 +20,38 @@ position = Vector2(544, 284)
 scale = Vector2(6.5, 6.5)
 texture = ExtResource("1_xfueh")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-offset_left = 340.0
-offset_top = 528.0
-offset_right = 676.0
-offset_bottom = 575.0
+[node name="LineEdit" type="LineEdit" parent="."]
+offset_left = 383.0
+offset_top = 517.0
+offset_right = 678.0
+offset_bottom = 548.0
+text = "You escaped quantum certainty for:"
+alignment = 1
+flat = true
+
+[node name="RichTextLabel" type="Label" parent="."]
+offset_left = 262.0
+offset_top = 547.0
+offset_right = 788.0
+offset_bottom = 594.0
+horizontal_alignment = 1
+vertical_alignment = 1
 script = ExtResource("2_t8o85")
+
+[node name="Restart Button" parent="." instance=ExtResource("3_u45o2")]
+offset_left = 471.0
+offset_top = 600.0
+offset_right = 583.0
+offset_bottom = 712.0
+
+[node name="Quit Button" parent="." instance=ExtResource("4_n3htk")]
+offset_left = 680.0
+offset_top = 600.0
+offset_right = 789.0
+offset_bottom = 716.0
+
+[node name="Main Menu Button" parent="." instance=ExtResource("5_ee8tb")]
+offset_left = 262.0
+offset_top = 600.0
+offset_right = 377.0
+offset_bottom = 712.0

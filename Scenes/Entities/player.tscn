@@ -1,7 +1,9 @@
-[gd_scene load_steps=24 format=3 uid="uid://bqa8joa6uwyck"]
+[gd_scene load_steps=26 format=3 uid="uid://bqa8joa6uwyck"]
 
 [ext_resource type="Script" path="res://Scripts/player_controller.gd" id="1_vkbid"]
+[ext_resource type="AudioStream" uid="uid://bm6ehqbws3qv6" path="res://Sound/Jump_meow.mp3" id="2_husaa"]
 [ext_resource type="Texture2D" uid="uid://dk2f22p4co8m5" path="res://Assets/Jumps_and_Walk-Sheet.png" id="2_qolw7"]
+[ext_resource type="AudioStream" uid="uid://der072mlxfvc1" path="res://Sound/Schrody_disspate.mp3" id="3_n4as7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hhv7x"]
 resource_local_to_scene = true
@@ -380,12 +382,14 @@ graph_offset = Vector2(-67, 156)
 scale = Vector2(2, 2)
 collision_mask = 2
 script = ExtResource("1_vkbid")
+jump_audio = ExtResource("2_husaa")
+dissipate_audio = ExtResource("3_n4as7")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 light_mask = 513
 texture = ExtResource("2_qolw7")
 hframes = 23
-frame = 4
+frame = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 4)
@@ -416,6 +420,9 @@ anim_player = NodePath("../AnimationPlayer")
 [node name="Alive Timer" type="Timer" parent="."]
 
 [node name="Dead Timer" type="Timer" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -27.313
 
 [connection signal="timeout" from="CoyoteTime" to="." method="_on_coyote_time_timeout"]
 [connection signal="timeout" from="JumpBuffer" to="." method="_on_jump_buffer_timeout"]

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dbt6nmmigeo8j"]
+
+[ext_resource type="Script" path="res://Scripts/UI/main_menu_button.gd" id="1_48ff0"]
+[ext_resource type="Texture2D" uid="uid://djaoe7l0ulr42" path="res://Assets/Main_Menu.png" id="1_d08dl"]
+
+[node name="Main Menu Button" type="TextureButton"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture_normal = ExtResource("1_d08dl")
+ignore_texture_size = true
+stretch_mode = 4
+script = ExtResource("1_48ff0")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

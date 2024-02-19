@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://gkwijag3y34u"]
+[gd_scene load_steps=6 format=3 uid="uid://gkwijag3y34u"]
 
 [ext_resource type="Texture2D" uid="uid://1alch0b4i36g" path="res://Assets/Title_v3.png" id="1_pbn70"]
 [ext_resource type="PackedScene" uid="uid://bm2ddi63k56ur" path="res://Scenes/UI/start_button.tscn" id="2_8okvs"]
+[ext_resource type="PackedScene" uid="uid://8my4vmkvooeh" path="res://Scenes/UI/quit_button.tscn" id="3_jetmg"]
+[ext_resource type="PackedScene" uid="uid://c280tv12htmvk" path="res://Scenes/UI/tutorial_button.tscn" id="4_kqprk"]
+[ext_resource type="PackedScene" uid="uid://bqa1gsg172cdi" path="res://Scenes/UI/wildcard_button.tscn" id="5_nv35m"]
 
 [node name="MainMenu" type="Node2D"]
 
@@ -17,10 +20,28 @@ position = Vector2(544, 284)
 scale = Vector2(6.5, 6.5)
 texture = ExtResource("1_pbn70")
 
-[node name="Start Button" parent="." instance=ExtResource("2_8okvs")]
-offset_left = 32.0
-offset_top = 536.0
-offset_right = 56.0
-offset_bottom = 555.0
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Start Button" parent="." instance=ExtResource("2_8okvs")]
+offset_left = 64.0
+offset_top = 544.0
+offset_right = 85.0
+offset_bottom = 564.0
+
+[node name="Quit Button" parent="." instance=ExtResource("3_jetmg")]
+offset_left = 872.0
+offset_top = 544.0
+offset_right = 1064.0
+offset_bottom = 694.0
+
+[node name="Tutorial Button" parent="." instance=ExtResource("4_kqprk")]
+offset_left = 368.0
+offset_top = 552.0
+offset_right = 387.0
+offset_bottom = 572.0
+
+[node name="Wildcard Button" parent="." instance=ExtResource("5_nv35m")]
+offset_left = 632.0
+offset_top = 560.0
+offset_right = 650.0
+offset_bottom = 577.0

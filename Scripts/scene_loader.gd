@@ -3,6 +3,8 @@ extends Node
 @export_file("*.tscn") var mainMenuScenePath
 @export_file("*.tscn") var mainGameScenePath
 @export_file("*.tscn") var gameOverScenePath
+@export_file("*.tscn") var wildcardScenePath
+@export_file("*.tscn") var tutorialScenePath
 
 var current_active_scene
 var loaded_scene_path
@@ -12,7 +14,7 @@ func _ready():
 	GameManager.game_over_signal.connect(game_over)
 
 func start_game():
-	print("hello")
+	GameManager.restart()
 	var current_scene = current_active_scene
 	loaded_scene_path = mainMenuScenePath
 	var main_game_scene = load(mainGameScenePath).instantiate()
@@ -38,4 +40,23 @@ func game_over():
 	if current_scene:
 		current_scene.queue_free()
 	call_deferred("add_child",game_over_scene)
+	
+func wildcard():
+	var current_scene = current_active_scene
+	loaded_scene_path = wildcardScenePath
+	var wildcard_scene = load(wildcardScenePath).instantiate()
+	current_active_scene = wildcard_scene
+	if current_scene:
+		current_scene.queue_free()
+	call_deferred("add_child",wildcard_scene)
+	
+func tutorial():
+	var current_scene = current_active_scene
+	loaded_scene_path = tutorialScenePath
+	var tutorial_scene = load(tutorialScenePath).instantiate()
+	current_active_scene = tutorial_scene
+	if current_scene:
+		current_scene.queue_free()
+	call_deferred("add_child",tutorial_scene)
+	
 	

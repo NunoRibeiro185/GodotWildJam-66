@@ -48,4 +48,3 @@ func _on_timer_timeout():
 
 func _on_difficulty_up_timeout():
 	eye_spawn_time *= change_value
-	print("Eye Spawn Time: ",eye_spawn_time)

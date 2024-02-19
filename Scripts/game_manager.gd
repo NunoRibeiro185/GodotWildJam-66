@@ -7,6 +7,10 @@ signal game_over_signal
 func _process(delta):
 	if time_running:
 		time += (int(delta*1000) + 1)
+	
+func restart():
+	time_running = false
+	time = 0
 
 func game_over():
 	emit_signal("game_over_signal")

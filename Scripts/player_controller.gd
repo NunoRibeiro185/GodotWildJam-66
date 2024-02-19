@@ -36,32 +36,36 @@ var hspeed_threshold = 1.0
 var state = "ALIVE"
 
 @onready var sus_bar = $"../CanvasLayer/SusBar"
+@onready var audio = $AudioStreamPlayer
+@export var jump_audio : AudioStreamMP3
+@export var dissipate_audio : AudioStreamMP3
 
 func _physics_process(delta):
-	if Input.is_action_pressed("play_dead"):
-		state = "DEAD"
-		animation.travel("Play_Dead")
-	if velocity.y >= 0:
-		jumping = false
+	if state != "DISSIPATE":
+		if Input.is_action_pressed("play_dead"):
+			state = "DEAD"
+			animation.travel("Play_Dead")
+		if velocity.y >= 0:
+			jumping = false
+			
+		if not is_on_floor():
+			velocity.y += current_gravity() * delta
+			
+		if velocity.x != 0:
+			sprite.scale.x = sign(velocity.x)
+			
+		# Handle jump.
+		jump(delta)
+		#Update Velocity
+		update_velocity(delta)
+		#Move and Slide
+		move_and_slide()
 		
-	if not is_on_floor():
-		velocity.y += current_gravity() * delta
+		if not is_on_floor() and last_floor and !jumping:
+			coyote = true
+			coyote_time.start()
 		
-	if velocity.x != 0:
-		sprite.scale.x = sign(velocity.x)
-		
-	# Handle jump.
-	jump(delta)
-	#Update Velocity
-	update_velocity(delta)
-	#Move and Slide
-	move_and_slide()
-	
-	if not is_on_floor() and last_floor and !jumping:
-		coyote = true
-		coyote_time.start()
-	
-	last_floor = is_on_floor()
+		last_floor = is_on_floor()
 
 func jump(_delta):
 	if Input.is_action_just_pressed("jump"):
@@ -69,6 +73,9 @@ func jump(_delta):
 		jump_buffer_time.start()
 		jump_buffer = true
 	if (is_on_floor() or coyote) and jump_buffer:
+		audio.pitch_scale = randf_range(0.85, 1.15)
+		audio.stream = jump_audio
+		audio.play()
 		jump_buffer = false
 		velocity.y = jump_velocity
 		coyote = false
@@ -79,7 +86,6 @@ func jump(_delta):
 			animation.travel("Jumping")
 		
 	if Input.is_action_just_released("jump") and jumping:
-		print("Cut Speed!")
 		cut_speed = true
 	if cut_speed:
 		if velocity.y < 0:
@@ -119,6 +125,13 @@ func detected(state):
 func current_max_vspeed():
 	return max_vspeed
 	
+func dissipate():
+	state = "DISSIPATE"
+	animation.travel("Death")
+	audio.pitch_scale = 1
+	audio.stream = dissipate_audio
+	audio.play()
+	
 func _on_coyote_time_timeout():
 	coyote = false
 
@@ -130,3 +143,5 @@ func _on_alive_timer_timeout():
 
 func _on_dead_timer_timeout():
 	sus_bar.dead_indicator.move(1)
+
+

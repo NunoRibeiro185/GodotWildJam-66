@@ -7,3 +7,5 @@ script = ExtResource("1_g8ta6")
 mainMenuScenePath = "res://Scenes/Levels/main_menu.tscn"
 mainGameScenePath = "res://Scenes/Levels/level.tscn"
 gameOverScenePath = "res://Scenes/Levels/game_over.tscn"
+wildcardScenePath = "res://Scenes/Levels/wildcards.tscn"
+tutorialScenePath = "res://Scenes/Levels/tutorial.tscn"

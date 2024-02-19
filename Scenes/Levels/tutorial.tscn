@@ -1,0 +1,60 @@
+[gd_scene load_steps=5 format=3 uid="uid://cp1v2md5af5wr"]
+
+[ext_resource type="Texture2D" uid="uid://d3tw4now3gp0x" path="res://Assets/Tutorial_pane.png" id="1_xqoqp"]
+[ext_resource type="PackedScene" uid="uid://bm2ddi63k56ur" path="res://Scenes/UI/start_button.tscn" id="2_lr67c"]
+[ext_resource type="PackedScene" uid="uid://dbt6nmmigeo8j" path="res://Scenes/UI/main_menu_button.tscn" id="3_jlcv8"]
+[ext_resource type="PackedScene" uid="uid://8my4vmkvooeh" path="res://Scenes/UI/quit_button.tscn" id="4_fbucn"]
+
+[node name="tutorial" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -32.0
+offset_top = -16.0
+offset_right = 1088.0
+offset_bottom = 736.0
+color = Color(0.470588, 0.298039, 0.317647, 1)
+
+[node name="TutorialPane" type="Sprite2D" parent="."]
+position = Vector2(384, 360)
+scale = Vector2(1.55, 1.55)
+texture = ExtResource("1_xqoqp")
+
+[node name="TextEdit" type="TextEdit" parent="."]
+offset_left = 128.0
+offset_top = 184.0
+offset_right = 656.0
+offset_bottom = 616.0
+theme_override_font_sizes/font_size = 17
+text = "Escape the gaze of schrodinger as long as possible.
+The read eyes will increase your quantum state of \"Dead\" 
+and the green ones your state of \"Alive\"
+If you are detected in one state for too 
+long you will lose your quantum essence.
+Good Luck
+Controls:
+Move Left - A, left key
+Move Right - D, right key
+Jump - W, Space, up key
+Duck/Play dead - S, down key
+On a controller you can move using the 
+analog stick and jump using the X button
+To duck/play dead press the square button or down
+"
+
+[node name="Start Button" parent="." instance=ExtResource("2_lr67c")]
+offset_left = 848.0
+offset_top = 240.0
+offset_right = 862.0
+offset_bottom = 254.0
+
+[node name="Main Menu Button" parent="." instance=ExtResource("3_jlcv8")]
+offset_left = 864.0
+offset_top = 368.0
+offset_right = 1040.0
+offset_bottom = 496.0
+
+[node name="Quit Button" parent="." instance=ExtResource("4_fbucn")]
+offset_left = 864.0
+offset_top = 472.0
+offset_right = 992.0
+offset_bottom = 608.0

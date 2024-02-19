@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://evytydsavwt7"]
+
+[ext_resource type="Texture2D" uid="uid://cnpxb5hbd0l3b" path="res://Assets/inside-box.png" id="1_qi3na"]
+[ext_resource type="PackedScene" uid="uid://bm2ddi63k56ur" path="res://Scenes/UI/start_button.tscn" id="2_i7sts"]
+[ext_resource type="PackedScene" uid="uid://dbt6nmmigeo8j" path="res://Scenes/UI/main_menu_button.tscn" id="3_j7pq8"]
+[ext_resource type="PackedScene" uid="uid://8my4vmkvooeh" path="res://Scenes/UI/quit_button.tscn" id="4_23yp0"]
+
+[node name="Wildcards" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -32.0
+offset_top = -16.0
+offset_right = 1088.0
+offset_bottom = 736.0
+color = Color(0.470588, 0.298039, 0.317647, 1)
+
+[node name="Inside-box" type="Sprite2D" parent="."]
+position = Vector2(448, 336)
+scale = Vector2(0.44, 0.44)
+texture = ExtResource("1_qi3na")
+
+[node name="Start Button" parent="." instance=ExtResource("2_i7sts")]
+offset_left = 760.0
+offset_top = 112.0
+offset_right = 774.0
+offset_bottom = 126.0
+
+[node name="Main Menu Button" parent="." instance=ExtResource("3_j7pq8")]
+offset_left = 768.0
+offset_top = 224.0
+offset_right = 960.0
+offset_bottom = 384.0
+
+[node name="Quit Button" parent="." instance=ExtResource("4_23yp0")]
+offset_left = 768.0
+offset_top = 424.0
+offset_right = 968.0
+offset_bottom = 584.0

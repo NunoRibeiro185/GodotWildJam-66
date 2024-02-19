@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cmh5evyivyc4o"]
+[gd_scene load_steps=24 format=3 uid="uid://cmh5evyivyc4o"]
 
 [ext_resource type="Script" path="res://Scripts/level.gd" id="1_3yyhy"]
 [ext_resource type="PackedScene" uid="uid://dp6crcac1ssj6" path="res://Scenes/Entities/eye_spawner.tscn" id="1_8omlf"]
@@ -10,7 +10,11 @@
 [ext_resource type="PackedScene" uid="uid://cmspfaumyn06y" path="res://Scenes/UI/sus_bar.tscn" id="7_ry4be"]
 [ext_resource type="PackedScene" uid="uid://7eykyp3gtkdw" path="res://Scenes/Obstacles/platform_long.tscn" id="8_t673c"]
 [ext_resource type="PackedScene" uid="uid://nwydmy6ai7y3" path="res://Scenes/Obstacles/rotating_platform.tscn" id="9_1g7wx"]
-[ext_resource type="Script" path="res://Scripts/Timer.gd" id="9_e4sct"]
+[ext_resource type="Script" path="res://Scripts/UI/Timer.gd" id="9_e4sct"]
+[ext_resource type="Texture2D" uid="uid://bncapy1e83qco" path="res://Assets/Stopwatch.png" id="10_j4x1j"]
+[ext_resource type="PackedScene" uid="uid://8my4vmkvooeh" path="res://Scenes/UI/quit_button.tscn" id="12_sdghs"]
+[ext_resource type="PackedScene" uid="uid://bmcvhx5gdruqr" path="res://Scenes/UI/restart_button.tscn" id="13_oipn4"]
+[ext_resource type="PackedScene" uid="uid://dbt6nmmigeo8j" path="res://Scenes/UI/main_menu_button.tscn" id="14_tty68"]
 
 [sub_resource type="Curve" id="Curve_ydkxs"]
 _data = [Vector2(0.631868, 1), 0.0, 0.0, 0, 0]
@@ -238,7 +242,7 @@ position = Vector2(656, 198)
 [node name="EyeSpawner" parent="." instance=ExtResource("1_8omlf")]
 
 [node name="Player" parent="." instance=ExtResource("1_y0f2y")]
-position = Vector2(624, 376)
+position = Vector2(551, 504)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -270,12 +274,35 @@ offset_right = 55.28
 offset_bottom = 624.32
 text = "Alive"
 
+[node name="Stopwatch" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(996, 128)
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("10_j4x1j")
+
 [node name="Timer" type="RichTextLabel" parent="CanvasLayer"]
-offset_left = 928.0
-offset_top = 64.0
-offset_right = 1072.0
-offset_bottom = 112.0
+offset_left = 960.0
+offset_top = 116.0
+offset_right = 1064.0
+offset_bottom = 148.0
 script = ExtResource("9_e4sct")
 
 [node name="Rotating Platform" parent="." instance=ExtResource("9_1g7wx")]
 position = Vector2(544, 296)
+
+[node name="Main Menu Button" parent="." instance=ExtResource("14_tty68")]
+offset_left = 944.0
+offset_top = 216.0
+offset_right = 1048.0
+offset_bottom = 320.0
+
+[node name="Quit Button" parent="." instance=ExtResource("12_sdghs")]
+offset_left = 944.0
+offset_top = 420.0
+offset_right = 1048.0
+offset_bottom = 532.0
+
+[node name="Restart Button" parent="." instance=ExtResource("13_oipn4")]
+offset_left = 944.0
+offset_top = 314.0
+offset_right = 1048.0
+offset_bottom = 426.0
